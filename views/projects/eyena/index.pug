@@ -1,0 +1,101 @@
+html
+	head
+		title Eyena
+		html(lang="en")
+		meta(name="title" content="Eyena | IoT based mirror")
+		meta(name="description" content="Eyena is an IoT based smart mirror that measures your body temperature upon detecting your presence without any physical contact. Looking like an everyday mirror, it blends with your furniture")
+		meta(name="keywords" content="Eyena iot collaborative project KrishSkywalker Krish Goel Covid Covid-19 Corona virus delhi sankriti school")
+		meta(name="charset" content="utf-8")
+		meta(name="viewport" content="width=device-width initial-scale=1.0, user-scalable=no")
+		meta(name="language" content="English")
+		meta(name="author" content="Krish Goel · KrishSkywalker")
+		meta(meta name="theme-color" content="#7e00ed")
+		//- OG MetaData
+		meta(property="og:title" content="Eyena | IoT based mirror")
+		meta(property="og:image" content="/images/eyena/introImage.PNG")
+		meta(property="og:image:width" content="2048")
+		meta(property="og:image:height" content="2048")
+		meta(property="og:description" content="Eyena is an IoT based smart mirror that measures your body temperature upon detecting your presence without any physical contact. Looking like an everyday mirror, it blends with your furniture.")
+		meta(property="og:url" content="https://krishskywalker.github.io/Eyena")
+		meta(property="og:type" content="website")
+		meta(property="og:locale" content="en_US")
+
+
+		//- Google Fonts
+		link(href="https://fonts.googleapis.com/css2?family=Roboto+Mono&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet")
+
+		//- Bootstrap grid
+		link(rel="stylesheet" href="/bootstrapGrid/grid.css" crossorigin="anonymous")
+		script(src="/bootstrapGrid/gridOne.js"	crossorigin="anonymous")
+		script(src="/bootstrapGrid/gridTwo.js" crossorigin="anonymous")
+		script(src="/bootstrapGrid/gridThree.js" crossorigin="anonymous")
+
+		//- Stylesheet
+		link(rel="stylesheet" href="/stylesheets/eyena.css")
+
+	body
+		section.intro
+			div.widthRestriction.row
+				div.col-lg-7
+					h1 आईना | Eyena
+					h2 Startup collaboration invite
+					h3 A smart IoT based mirror that detects your body temperature
+					h4 Let's fight COVID-19 face-to-face
+					a(href="https://forms.gle/CaZTWZkCC5brxbrFA")
+						button Join the team
+					h4 Please note that this project has been postponed indefinitely due to issues regarding the economic feasibility
+
+				div.col-lg-5
+					img(src="/images/eyena/introGif.gif")
+		nav
+			div.widthRestriction
+				div.row
+					div.col-lg-12
+						div.topnavLinks
+							a(href="#introduction") Introduction
+							a(href="#working") Working
+							a(href="#research") Research
+							a(href="#collaboration") Collaboration
+							a(href="#joinin") Join in
+		section.documentation
+			div.widthRestriction
+				include documentationPartials/openLetter.pug
+				include documentationPartials/eyenaIntroduction.pug
+				include documentationPartials/working.pug
+				include documentationPartials/research.pug
+				include documentationPartials/collaboration.pug
+		section.footer#how
+			p.centre 
+				| Made with ❤️ by 
+				a(href="https://krishgoel.com") KrishSkywalker 
+				| and 
+				a(href="https://yashdeswal.com") Yash Deswal
+
+			div.closing
+		//- JQuery
+		script(src="https://code.jquery.com/jquery-3.4.1.js" type="text/javascript")
+		script.
+			$(document).ready(function () {
+				// Add smooth scrolling to all links
+				$("a").on('click', function (event) {
+
+					// Make sure this.hash has a value before overriding default behavior
+					if (this.hash !== "") {
+						// Prevent default anchor click behavior
+						event.preventDefault();
+
+						// Store hash
+						var hash = this.hash;
+
+						// Using jQuery's animate() method to add smooth page scroll
+						// The optional number (800) specifies the number of milliseconds it takes to scroll to the specified area
+						$('html, body').animate({
+							scrollTop: $(hash).offset().top
+						}, 800, function () {
+
+							// Add hash (#) to URL when done scrolling (default click behavior)
+							window.location.hash = hash;
+						});
+					} // End if
+				});
+			});

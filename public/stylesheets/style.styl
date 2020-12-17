@@ -1,0 +1,388 @@
+// RFS import
+@import "../../node_modules/rfs/stylus.styl";
+
+// Font imports
+@font-face
+   font-family Gilroy
+   src url(/fonts/Gilroy-ExtraBold.ttf)
+
+// @font-face
+//    font-family SpaceMono
+//    src url(/fonts/SpaceMono-Regular.ttf)
+   
+// @font-face
+//    font-family Lato
+//    src url(/fonts/Lato-Regular.ttf)
+  
+// @font-face
+//    font-family GitHub
+//    src url(/fonts/ApexSansBoldST.ttf)
+
+// Gradients
+.gradient
+   width 80%
+   height 7px
+   border-radius 10px
+   margin 0 auto
+   margin-top 30px
+   margin-bottom 30px
+   
+yellowOrange = linear-gradient(90deg, #FAD961 0%, #ffb042 100%)
+orangePink =  linear-gradient(90deg, #ffb042 0%, #e046de 100%)
+pinkBlue = linear-gradient(90deg, #e046de 0%, #52a0ff 100%)
+blueFusia = linear-gradient(90deg, #52a0ff 0%, #ff4ab4 100%)
+fusiaYellow = linear-gradient(90deg, #ff4ab4 0%, #fff34a 100%)
+yellowCyan = linear-gradient(90deg, #fff34a 0%, #0df5ff 100%)
+blueGreen = linear-gradient(90deg, #0df5ff 0%, #48f583 100%)
+
+.Y2O
+   background-image yellowOrange
+.O2P
+   background-image orangePink
+.P2B
+   background-image pinkBlue
+.B2F
+   background-image blueFusia
+.F2Y
+   background-image fusiaYellow
+.Y2C
+   background-image yellowCyan
+.B2G
+   background-image blueGreen
+   
+.widthRestriction
+   width 85%
+   display block
+   margin 0 auto
+
+body 
+   font-family Lato
+   margin 0
+   padding 0
+
+a
+   rfs(1rem)
+   text-decoration none
+
+img
+   width 100%
+   
+h1 
+   rfs(2.3rem)
+
+h1 a
+   rfs(2.3rem)
+
+h2
+   rfs(1.7rem)
+
+h2 a
+   rfs(1.7rem)
+
+h3
+   rfs(1.5rem)
+
+h3 a
+   rfs(1.5rem)
+
+h4
+   rfs(1.2rem)
+
+h4 a
+   rfs(1.2rem)
+
+h5
+   rfs(0.9rem)
+
+h5 a
+   rfs(0.9rem)
+
+h6, h6 a
+   rfs(1rem)   
+
+p 
+   rfs(1rem)
+   margin-top 0
+   margin-bottom 0
+
+p a
+   rfs(1rem)
+   font-weight bold
+
+h1, h2, h3, h4, h5, h6
+   margin-top 0
+   margin-bottom 0
+   font-family Gilroy
+
+.mono
+   font-family Space Mono
+
+.bold
+   font-weight bold
+
+.center
+   text-align center
+
+::selection
+   background-color darkGrey
+   color white
+
+.col-2
+   width 50%
+   display inline-block
+   vertical-align top
+
+.col-4
+   width 25%
+   display inline-block
+   vertical-align top
+
+.largeScreen
+   display block
+
+.midScreen, .smallScreen
+   display none
+
+@media screen and (max-width 650px)
+   .col-2
+      width 100%
+   .reachMe .col-2 .widthRestriction
+      width 100%
+   .reachMe .col-2 .widthRestriction .card .widthRestriction
+      width 85%
+   
+@media screen and (max-width 800px)
+   .col-4
+      width 50%
+   .col-4 .largeScreen
+      display none
+   .col-4 .midScreen
+      display block
+
+@media screen and (max-width 600px)
+   .col-4
+      width 100%
+   .col-4 .largeScreen
+      display none
+   .col-4 .midScreen
+      display none
+   .col-4 .smallScreen
+      display block
+   .col-4 .card
+      width 100%
+
+// Topnav
+nav
+   width 100%
+   text-align right
+   white-space nowrap
+   overflow-x auto
+   position fixed 
+   top 0px
+   display inline-block
+   padding-bottom 15px
+   padding-top 15px
+   z-index 2
+
+nav h1, nav .topnavLinks
+   display inline-block
+
+nav h1
+   float left
+   margin-right 40px
+
+#sun, #moon 
+   margin-right 30px
+
+nav .topnavLinks
+   display block
+
+nav .topnavLinks a
+   margin-right 13px
+   transition 0.2s
+
+nav .topnavLinks a:hover
+   padding-bottom 5px
+
+// Intro section
+.intro
+   background-image url('/images/banner.png')
+   background-position 75% 70% // x% y% x(100%)=right and y(100%)=bottom
+   background-repeat no-repeat
+   background-attachment scroll
+   background-size cover
+   padding-top 60px
+   padding-bottom 60px
+
+.intro p
+   line-height 23px
+
+// Cards
+.card
+   width 95%
+   border-radius 10px
+   transition 0.2s
+   border none
+   padding-bottom 20px
+   margin 0 auto
+   margin-top 30px
+   margin-right 20px
+   float left
+
+.card img
+   border-top-left-radius 10px
+   border-top-right-radius 10px
+
+.card h2
+   padding-top 20px
+
+.card h4
+   font-family Lato
+
+.card h6
+   margin 10px 0px
+   font-family Lato
+   rfs(0.9rem)
+   font-weight 400
+   
+.card p 
+   line-height 23px
+   margin-top 5px
+   margin-bottom 10px
+
+.card .tags
+   display inline-block
+   cursor default
+
+.card .tags .tag
+   display inline-block
+   padding 0px 10px
+   border-radius 20px
+   margin-right 5px
+   margin-bottom 7px
+   transition 0.2s
+
+.card .tags .tag p
+   rfs(0.7rem)
+   margin-top 0
+   margin-bottom 0
+
+.card .resources a
+   rfs(1.5rem)
+   margin-right 5px
+
+.progressBarContainer
+   width 100%
+   border-radius 10px
+   height 15px
+
+.progressBar
+   position relative
+   top 0
+   border-radius 10px
+   height 15px
+
+.experience .card h2
+   padding-bottom 5px
+
+.experience .card p, .experience .card a
+   rfs(0.9rem)
+   padding-top 5px
+   padding-bottom 5px
+
+.experience .card a
+   transition 0.2s
+
+.experience .card a:hover
+   padding-bottom 5px
+   
+// Reach me section
+.playlistContainer
+   width 100%
+   border-radius 10px
+   padding-top 40px
+   padding-bottom 40px
+
+.playlistContainer iframe
+   width 100%
+   height 100%
+
+.reachMe .col-2 .card 
+   margin-bottom 30px
+
+.reachMe .col-2 .contactLinks a
+   margin-right 20px
+   line-height 30px
+   padding-bottom 5px
+   transition 0.2s
+   display inline-block
+   
+
+// Icons colors
+.fa-instagram
+   background radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285aeb 90%)
+   -webkit-background-clip text
+   -webkit-text-fill-color transparent
+
+.fa-spotify
+   color #1db954
+
+.fa-whatsapp
+   color #25D366
+
+.fa-linkedin
+   color #0071B1
+
+.fa-twitter
+   color #1DA1F2
+
+.fa-reddit
+   color #ff4500
+
+.fa-facebook
+   color #3b5998
+
+.KrishSkywalker
+   width 100%
+   text-align center
+   
+.KrishSkywalker p
+   font-weight bold
+   rfs(1rem)
+   padding-bottom 250px
+   
+// Special CSS   
+.project .card
+   width 100%
+   border-radius 10px
+   transition 0.2s
+   border none
+   display inline-block
+   margin 0 auto
+   margin-top 20px
+   margin-bottom 20px
+   padding 20px 0px
+
+.project .card .widthRestriction
+   width 85%
+   
+.project p
+   line-height 23px
+
+.project .card img
+   border-radius 0
+
+.blogPage .card
+   width 100%
+   border-radius 10px
+   transition 0.2s
+   border none
+   display inline-block
+   margin 0 auto
+   margin-top 20px
+   margin-bottom 20px
+   padding 20px 0px
+   
+.blogPage img
+   border-radius 0
+   margin-bottom 20px

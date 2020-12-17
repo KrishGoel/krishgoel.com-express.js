@@ -1,0 +1,201 @@
+// RFS import
+@import "../../node_modules/rfs/stylus.styl";
+
+// Font imports
+// @font-face
+//    font-family Roboto
+//    font-weight 700
+//    src url(/fonts/Roboto-Bold.ttf)
+   
+// @font-face
+//    font-family Roboto
+//    font-weight 400
+//    src url(/fonts/Roboto-Regular.ttf)
+
+// @font-face
+//    font-family Roboto
+//    font-weight 300
+//    src url(/fonts/Roboto-Light.ttf)
+
+// @font-face
+//    font-family Roboto Mono
+//    font-weight 400
+//    src url(/fonts/RobotoMono-Regular.ttf)
+
+// Palette
+deepBlue = #000033
+white = #ffffff
+purple = #7e00ed
+black = #000000
+darkGrey = #242424
+
+body 
+	margin 0
+	padding 0
+	font-family 'Roboto'
+	scroll-behavior smooth
+
+.widthRestriction
+	width 90%
+	margin 0 auto
+
+h1
+	rfs(3rem)
+
+h2 
+	rfs(2rem)
+
+h3 
+	rfs(1.5rem)
+	color purple
+
+h4
+	rfs(1.3rem)
+
+h5
+	rfs(1.1rem)
+
+p  
+	rfs(1.1rem)
+
+a
+	text-decoration none
+
+section 
+	padding-top 40px
+
+hr
+	background-color purple
+	margin-top 20px
+	margin-bottom 50px
+
+.mono
+	font-family 'Roboto Mono'
+
+.centre
+	text-align center
+
+.purple
+	color purple
+
+.bold
+	font-weight 700
+
+.italic
+	font-style italic
+
+.caption
+	rfs(0.9rem)
+	font-style italic
+	text-align center
+	margin-top 5px
+	margin-right 20px
+	margin-left 20px
+
+.discarded
+	opacity 0.5
+
+// Intro section
+.intro 
+	background-color deepBlue
+	color purple
+
+.intro .col-lg-7
+	padding-top 40px
+
+.intro h1
+	rfs(4rem)
+	color white
+	font-weight 700
+
+.intro h2 
+	font-weight 400
+
+.intro h3
+	font-weight 300
+
+.intro button
+	color white
+	border 2px solid purple
+	border-radius 7px
+	padding 7px 10px 7px 10px
+	margin-top 15px
+	margin-right 10px
+	background-color rgba(0,0,0,0)
+	transition 0.2s
+	margin-bottom 20px
+	
+.intro button:hover
+	background-color purple
+
+.intro img
+	width 100%
+	margin-bottom 50px
+	
+// Topnav
+nav
+   width 100%
+   display inline-block
+   text-align left
+   padding-top 15px
+   padding-bottom 15px
+   white-space nowrap
+   overflow-x auto
+   position sticky 
+   top 0px
+   background-color purple
+   z-index 2
+
+.topnavLinks a
+   margin-right 20px
+   transition 0.2s
+   color white
+   padding-bottom 5px
+   border-bottom 1px solid purple
+   rfs(1rem)
+
+.topnavLinks a:hover
+   padding-bottom 5px
+   border-bottom 1px solid white
+  
+// Document
+p a
+	border-bottom 2px solid white
+	transition 0.2s
+	color purple
+	font-weight 700
+
+p a:hover
+	border-bottom 2px solid purple
+
+.documentation img
+	width 100%
+
+li a
+	border-bottom 2px solid white
+	transition 0.2s
+	color purple
+	font-weight 700
+
+li a:hover
+	border-bottom 2px solid purple
+
+.documentation button
+	color purple
+	border 2px solid purple
+	border-radius 7px
+	padding 7px 10px 7px 10px
+	margin-top 15px
+	margin-right 10px
+	background-color rgba(0,0,0,0)
+	transition 0.2s
+
+.documentation button:hover
+	background-color purple
+	color white
+
+// Footer
+.closing 
+	width 100%
+	background-color purple
+	height 8px

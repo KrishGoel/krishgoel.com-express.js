@@ -1,0 +1,29 @@
+html
+	include includes/head.pug
+	body
+		nav#topnav
+			.widthRestriction
+				h1#logo KRISH GOEL
+				div.topnavLinks#topnavLinks
+					a#moon 🌜
+					a#sun 🌞
+					a(href="/") 🏠 Home
+		.widthRestriction(style="text-align: center")
+			#belowTopNavContent
+				h1 You seem to be lost
+				br
+				h2 
+					| Find your way back 
+					a(href="/") 🏠 here
+	//- Homebrewed scripts
+	script.
+		window.onload = function startScript() {	
+			var topnav = document.getElementById('topnav');
+			var topnavLogo = document.getElementById('logo');
+			var topnavLinks = document.getElementById('topnavLinks');
+
+			topnavLinks.style.paddingTop = ((topnav.offsetHeight - 40) - topnavLinks.offsetHeight)/2;
+		}
+		var topnav = document.getElementById('topnav');
+		var belowTopNavContent = document.getElementById('belowTopNavContent');
+		belowTopNavContent.style.paddingTop = (screen.height - belowTopNavContent.offsetHeight)/3;

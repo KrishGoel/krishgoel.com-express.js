@@ -1,0 +1,313 @@
+div.row#working
+	div.col-lg-12
+		h2 How does Eyena work?
+		p
+			| Due to preventive lockdown measures and online classes, we haven't been able to give the time Eyena deserves and source all the parts we need for bringing this to reality (and that's somewhere we need your help, we'll discuss this further into this document). Hence, we divided Eyena into 4 progressive versions making it an MVP for the prototyping stage.
+			br
+			br
+			| While we were going for a purely IR based measurement system earlier (as described in -v1.0 and -v2.0), a major drawback in the MLX96014 is the range in terms of distance. The sensor loses its measurement resolution beyond a distance of more than 10cm which is not viable for a wall mirror. We hence shifted the measurement technology from Infrared to thermal imaging (as described in -v3.0 and -v4.0).
+	div.widthRestriction
+		br
+		div.row.discarded
+			div.col-lg-6
+				h3.mono -v1.0 (discarded)
+				p A smart mirror that displays usual stats (weather, news, 5 tweets you should know etc.) from a customizable web API and detects temperature when it detects a face in proximity.
+				h4 BOM (Bill of materials)
+				h5 Electronics 
+				ul
+					li Raspberry Pi 3 (Main prototyping MCU)
+					li MLX96014 (IR based thermal sensor)
+					li PIR Motion Detection Sensor HC-SR501 (For detecting the presence of a face)
+					li Any HDMI supported monitor
+					li Raspberry Pi power module
+					li Power breakout board for the monitor (Exact model depends on the monitor)
+				h5 Hardware
+				ul
+					li A wooden frame of any kind
+					li A glass slab
+					li 2 sided mirror film
+			div.col-lg-6
+				h3.mono -v2.0 (discarded)
+				p 
+					| All of
+					span.mono  -v1.0 
+					| + it recognises the face and displays a “Hi + [UserName]” message and stores the data of the user in its database and adds new faces in case of guests. Upon detection, it displays the user’s stats including temperature and analyses the trends and adds it to the web API which is accessible by the owner.
+
+				h4 BOM (Bill of materials)
+				h5 Electronics 
+				ul
+					li Raspberry Pi 3 (Main prototyping MCU)
+					li MLX96014 (IR based thermal sensor)
+					li PIR Motion Detection Sensor HC-SR501 (For detecting the presence of a face)
+					li Raspberry Pi Camera Module v2
+					li Any HDMI supported monitor
+					li Raspberry Pi power module
+					li Power breakout board for the monitor (Exact model depends on the monitor)
+				h5 
+					| Hardware (Same as 
+					span.mono -v1.0
+					|)
+				ul
+					li A wooden frame of any kind
+					li A glass slab
+					li 2 sided mirror film
+		br
+		div.row
+			div.col-lg-6
+				h3.mono -v3.0
+				p A smart mirror that displays usual stats (weather, news, 5 tweets you should know etc.) from a customizable web API and detects temperature when it detects a face in proximity, it also checks if the user is wearing a mask.
+				h4 BOM (Bill of materials)
+				h5 Electronics 
+				ul
+					li Raspberry Pi 3 (Main prototyping MCU)
+					li MLX96040 (32x24px thermal camera module)
+					li Raspberry Pi Camera Module v2
+					li SD Card (for storing images in case of alarming temperature)
+					li Any HDMI supported monitor
+					li Raspberry Pi power module
+					li Power breakout board for the monitor (Exact model depends on the monitor)
+				h5 Hardware
+				ul
+					li A wooden frame of any kind
+					li A glass slab
+					li 2 sided mirror film
+				p 
+					| The mask detection of make is done using 
+					a(href="https://appsource.microsoft.com/en-us/product/web-apps/devissoftware.maskerizer?tab=Overview") Maskerizer 
+					| which is an open source API for face mask detection.
+			div.col-lg-6
+				h3.mono -v4.0
+				p 
+					| All of
+					span.mono  -v3.0 
+					| + it stores the data of the user in its database and adds new faces in case of guests. Upon detection, it displays the user’s stats including temperature and analyses the trends and adds it to the web API which is accessible by the owner.
+					br
+					br
+					| This gives rise to the main service I'll be aiming to provide, an ecosystem of IoT devices and a bio ID. The game just went massive 
+					a(href="https://twitter.com/news18dotcom/status/1161877654632452101").italic "Yeh khel aap se, mujh se, hum sab se bada hai." 
+					br
+					br
+					| The Bio ID is a universal pass for any user that is a guarantee of the person being healthy and safe from the pandemic. The camera in Eyena can read the user's Bio ID QR Code (like the one generated in 
+					a(href="https://en.wikipedia.org/wiki/Aarogya_Setu") Aarogya Setu
+					| ). Upon scanning, Eyena can create (if not already existing) a user in its DB wherein it inserts the current information and measurements of the user (in this case presence of mask and the temperature). If the user accesses more than one Eyenas, the location data can also be added to the analytics. In a way, this acts as a regulatory entry system, public places can restrict an individual's entry based on a the results from the BioID. 
+					br
+					br
+					| The concept of Bio ID can then be extended to more appliances like Thermal CCTV cameras etc. to create a more diverse ecosystem of connected devices.
+				h4 
+					| BOM (Same as 
+					span.mono -v3.0
+					| )
+		br
+		p.italic Please note that this is the BOM for the prototyping stage, the BOM for the final product would be entirely different and more cost efficient.
+		br
+		h3 The math for image size and field of view
+		p To increase the range of measurement in terms of distance from the mirror, we'll be needing thermal imaging instead of IR based temperature measurement. The viable sensor in this case is of the MLX96040 with an output resolution of 32x42 pixels. The calculations for the same are shared below.
+		p.italic General note: Aspect ratio of the image = 4:3
+		div.row
+			div.col-lg-5
+				br
+				img(src="/images/eyena/fieldOfView.png" style="display: block; margin: auto; width: 85%; padding-bottom: 20px")
+			div.col-lg-7
+				p
+					| Field of view of the MLX96040 = 55° x 35° [∠EAC]
+					br
+					| Desirable distance from the mirror = 100cm (1m) [DC = AB]
+					br
+					br
+					| Considering right angled △BAC,
+					br 
+					| tan 27.5° = BC/AB = BC/100
+					br
+					| ⟹ BC = 100 x ~0.52 = 52cm
+					br
+					| ⟹ EC = 104cm
+					br
+					| ∴ Width of coverage at 1m from the mirror = 1.04m
+					br
+					br
+					| When this image is super imposed onto the 32x24px thermal image grid, horizontally, each thermal pixel covers 3.25cm of the real image at 1m because 1.04m/32 = 3.25cm
+					br
+					br
+					| The average width of a forehead is 125mm (averaging the curve) and similarly, the average height is 60mm
+					br
+					| ⟹ The thermally scannable grid will have the dimensions of 2x8 pixels as shown below
+			div.col-lg-12
+				br
+
+				p
+					| My suggestion is that we incorporate 2 camera modules (1 thermal and 1optical) with the same angle of field of view (in the case of MLX96040 55°). The regular optical camera module (with a higher definition) can use face detection APIs to find the position of the face. Upon detection, the thermal image is super imposed on to the regular image to find the thermal location of faces post which the thermal signature is taken.
+				p Consider the following example for a better understanding of how this works -
+			div.col-lg-6
+				img(src="/images/eyena/faceDetected.png")
+				p.caption The regular optical camera detects the position of the face because the resolution of our thermal camera is not high enough
+			div.col-lg-6
+				img(src="/images/eyena/thermalOverlap.png")
+				p.caption The thermal camera image gets the position of the face through the optical camera for further analysis through superpositioning
+			div.col-lg-12
+				br
+				p Post overlapping the 2 images, we get the following 2x8px grid on the forehead for our measurements -
+			div.col-lg-6
+				img(src="/images/eyena/foreheadGridDetected.png" style="margin-bottom: 20px")
+			div.col-lg-6
+				img(src="/images/eyena/foreheadGrid.png")
+				p.caption The extreme pixels of the grid will have a lesser contribution into the calculation of the temperature while the central pixels will give the dominant reading.
+hr
+
+	//- foreheadGridDetected
+
+//- div.row#working
+//- 	div.col-lg-12
+//- 		h2 How does Eyena work?
+//- 		p
+//- 			| Due to preventive lockdown measures and my online classes, I haven't been able to give the time Eyena deserves and source all the parts I need for bringing this to reality (and that's somewhere I need your help, I'll discuss this further into this document). Hence, I divided Eyena into 4 progressive versions making it an MVP for the prototyping stage.
+//- 			br
+//- 			br
+//- 			| While I was going for a purely IR based measurement system earlier (as described in -v1.0 and -v2.0), a major drawback in the MLX96014 is the range in terms of distance. The sensor loses its measurement resolution beyond a distance of more than 10cm which is not viable for a wall mirror. I hence shifted the measurement technology from Infrared to thermal imaging (as described in -v3.0 and -v4.0).
+//- 	div.widthRestriction
+//- 		br
+//- 		div.row.discarded
+//- 			div.col-lg-6
+//- 				h3.mono -v1.0 (discarded)
+//- 				p A smart mirror that displays usual stats (weather, news, 5 tweets you should know etc.) from a customizable web API and detects temperature when it detects a face in proximity.
+//- 				h4 BOM (Bill of materials)
+//- 				h5 Electronics 
+//- 				ul
+//- 					li Raspberry Pi 3 (Main prototyping MCU)
+//- 					li MLX96014 (IR based thermal sensor)
+//- 					li PIR Motion Detection Sensor HC-SR501 (For detecting the presence of a face)
+//- 					li Any HDMI supported monitor
+//- 					li Raspberry Pi power module
+//- 					li Power breakout board for the monitor (Exact model depends on the monitor)
+//- 				h5 Hardware
+//- 				ul
+//- 					li A wooden frame of any kind
+//- 					li A glass slab
+//- 					li 2 sided mirror film
+//- 			div.col-lg-6
+//- 				h3.mono -v2.0 (discarded)
+//- 				p 
+//- 					| All of
+//- 					span.mono  -v1.0 
+//- 					| + it recognises the face and displays a “Hi + [UserName]” message and stores the data of the user in its database and adds new faces in case of guests. Upon detection, it displays the user’s stats including temperature and analyses the trends and adds it to the web API which is accessible by the owner.
+
+//- 				h4 BOM (Bill of materials)
+//- 				h5 Electronics 
+//- 				ul
+//- 					li Raspberry Pi 3 (Main prototyping MCU)
+//- 					li MLX96014 (IR based thermal sensor)
+//- 					li PIR Motion Detection Sensor HC-SR501 (For detecting the presence of a face)
+//- 					li Raspberry Pi Camera Module v2
+//- 					li Any HDMI supported monitor
+//- 					li Raspberry Pi power module
+//- 					li Power breakout board for the monitor (Exact model depends on the monitor)
+//- 				h5 
+//- 					| Hardware (Same as 
+//- 					span.mono -v1.0
+//- 					|)
+//- 				ul
+//- 					li A wooden frame of any kind
+//- 					li A glass slab
+//- 					li 2 sided mirror film
+//- 		br
+//- 		div.row
+//- 			div.col-lg-6
+//- 				h3.mono -v3.0
+//- 				p A smart mirror that displays usual stats (weather, news, 5 tweets you should know etc.) from a customizable web API and detects temperature when it detects a face in proximity, it also checks if the user is wearing a mask.
+//- 				h4 BOM (Bill of materials)
+//- 				h5 Electronics 
+//- 				ul
+//- 					li Raspberry Pi 3 (Main prototyping MCU)
+//- 					li MLX96040 (32x24px thermal camera module)
+//- 					li Raspberry Pi Camera Module v2
+//- 					li SD Card (for storing images in case of alarming temperature)
+//- 					li Any HDMI supported monitor
+//- 					li Raspberry Pi power module
+//- 					li Power breakout board for the monitor (Exact model depends on the monitor)
+//- 				h5 Hardware
+//- 				ul
+//- 					li A wooden frame of any kind
+//- 					li A glass slab
+//- 					li 2 sided mirror film
+//- 				p 
+//- 					| The mask detection of make is done using 
+//- 					a(href="https://appsource.microsoft.com/en-us/product/web-apps/devissoftware.maskerizer?tab=Overview") Maskerizer 
+//- 					| which is an open source API for face mask detection.
+//- 			div.col-lg-6
+//- 				h3.mono -v4.0
+//- 				p 
+//- 					| All of
+//- 					span.mono  -v3.0 
+//- 					| + it stores the data of the user in its database and adds new faces in case of guests. Upon detection, it displays the user’s stats including temperature and analyses the trends and adds it to the web API which is accessible by the owner.
+//- 					br
+//- 					br
+//- 					| This gives rise to the main service I'll be aiming to provide, an ecosystem of IoT devices and a bio ID. The game just went massive 
+//- 					a(href="https://twitter.com/news18dotcom/status/1161877654632452101").italic "Yeh khel aap se, mujh se, hum sab se bada hai." 
+//- 					br
+//- 					br
+//- 					| The Bio ID is a universal pass for any user that is a guarantee of the person being healthy and safe from the pandemic. The camera in Eyena can read the user's Bio ID QR Code (like the one generated in 
+//- 					a(href="https://en.wikipedia.org/wiki/Aarogya_Setu") Aarogya Setu
+//- 					| ). Upon scanning, Eyena can create (if not already existing) a user in its DB wherein it inserts the current information and measurements of the user (in this case presence of mask and the temperature). If the user accesses more than one Eyenas, the location data can also be added to the analytics. In a way, this acts as a regulatory entry system, public places can restrict an individual's entry based on a the results from the BioID. 
+//- 					br
+//- 					br
+//- 					| The concept of Bio ID can then be extended to more appliances like Thermal CCTV cameras etc. to create a more diverse ecosystem of connected devices.
+//- 				h4 
+//- 					| BOM (Same as 
+//- 					span.mono -v3.0
+//- 					| )
+//- 		br
+//- 		p.italic Please note that this is the BOM for the prototyping stage, the BOM for the final product would be entirely different and more cost efficient.
+//- 		br
+//- 		h3 The math for image size and field of view
+//- 		p To increase the range of measurement in terms of distance from the mirror, we'll be needing thermal imaging instead of IR based temperature measurement. The viable sensor in this case is of the MLX96040 with an output resolution of 32x42 pixels. The calculations for the same are shared below.
+//- 		p.italic General note: Aspect ratio of the image = 4:3
+//- 		div.row
+//- 			div.col-lg-5
+//- 				br
+//- 				img(src="/images/eyena/fieldOfView.png" style="display: block; margin: auto; width: 85%; padding-bottom: 20px")
+//- 			div.col-lg-7
+//- 				p
+//- 					| Field of view of the MLX96040 = 55° x 35° [∠EAC]
+//- 					br
+//- 					| Desirable distance from the mirror = 100cm (1m) [DC = AB]
+//- 					br
+//- 					br
+//- 					| Considering right angled △BAC,
+//- 					br 
+//- 					| tan 27.5° = BC/AB = BC/100
+//- 					br
+//- 					| ⟹ BC = 100 x ~0.52 = 52cm
+//- 					br
+//- 					| ⟹ EC = 104cm
+//- 					br
+//- 					| ∴ Width of coverage at 1m from the mirror = 1.04m
+//- 					br
+//- 					br
+//- 					| When this image is super imposed onto the 32x24px thermal image grid, horizontally, each thermal pixel covers 3.25cm of the real image at 1m because 1.04m/32 = 3.25cm
+//- 					br
+//- 					br
+//- 					| The average width of a forehead is 125mm (averaging the curve) and similarly, the average height is 60mm
+//- 					br
+//- 					| ⟹ The thermally scannable grid will have the dimensions of 2x8 pixels as shown below
+//- 			div.col-lg-12
+//- 				br
+
+//- 				p
+//- 					| My suggestion is that we incorporate 2 camera modules (1 thermal and 1optical) with the same angle of field of view (in the case of MLX96040 55°). The regular optical camera module (with a higher definition) can use face detection APIs to find the position of the face. Upon detection, the thermal image is super imposed on to the regular image to find the thermal location of faces post which the thermal signature is taken.
+//- 				p Consider the following example for a better understanding of how this works -
+//- 			div.col-lg-6
+//- 				img(src="/images/eyena/faceDetected.png")
+//- 				p.caption The regular optical camera detects the position of the face because the resolution of our thermal camera is not high enough
+//- 			div.col-lg-6
+//- 				img(src="/images/eyena/thermalOverlap.png")
+//- 				p.caption The thermal camera image gets the position of the face through the optical camera for further analysis through superpositioning
+//- 			div.col-lg-12
+//- 				br
+//- 				p Post overlapping the 2 images, we get the following 2x8px grid on the forehead for our measurements -
+//- 			div.col-lg-6
+//- 				img(src="/images/eyena/foreheadGridDetected.png" style="margin-bottom: 20px")
+//- 			div.col-lg-6
+//- 				img(src="/images/eyena/foreheadGrid.png")
+//- 				p.caption The extreme pixels of the grid will have a lesser contribution into the calculation of the temperature while the central pixels will give the dominant reading.
+//- hr
+
+//- 	//- foreheadGridDetected

@@ -1,0 +1,90 @@
+html
+	include ../../includes/head.pug
+	body.project
+		nav#topnav
+			.widthRestriction
+				a(href="/")#logo
+					h1#logo KRISH GOEL
+				div.topnavLinks#topnavLinks
+					a#moon 🌜
+					a#sun 🌞
+					a(href="#idea") 💡 The Idea
+					a(href="#working") ⚙️ Working
+					a(href="#seekhoSikhao") 💸 Privilege Prog
+					a(href="#future") 🔓 2.0
+					a(href="#plan") 💲 Business Plan
+					a(href="#tech") 🌐 Tech Stack
+					a(href="#design") ✏️ Design
+					a(href="#tahnkyou") 🙏 Thank you
+		#belowTopNavContent
+			.widthRestriction
+				h1 The Gyaan Academy
+				br
+				h5 🚀 Idea documentation
+				include documentationPartials/introLetter.pug
+				include documentationPartials/ideaIntro.pug
+				include documentationPartials/usp.pug
+				include documentationPartials/howItWorks.pug
+				include documentationPartials/seekhoSikhao.pug
+				include documentationPartials/futurePlan.pug
+				include documentationPartials/economics.pug
+				include documentationPartials/userEngagement.pug
+				include documentationPartials/techStack.pug
+				include documentationPartials/design.pug
+				include documentationPartials/thankyou.pug
+			br
+			br
+		//- Homebrewed scripts
+		script.
+			window.onload = function startScript() {	
+				var topnav = document.getElementById('topnav');
+				var topnavLogo = document.getElementById('logo');
+				var topnavLinks = document.getElementById('topnavLinks');
+
+				topnavLinks.style.paddingTop = ((topnav.offsetHeight - 30) - topnavLinks.offsetHeight)/2;
+			}
+
+			var moon = document.getElementById('moon');
+			var sun = document.getElementById('sun');
+
+			document.getElementById("darkSS").disabled = true;
+
+			function darkMode() {
+			  document.getElementById("lightSS").disabled = true;
+			  document.getElementById("darkSS").disabled = false;
+			}
+
+			function lightMode() {
+			  document.getElementById("lightSS").disabled = false;
+			  document.getElementById("darkSS").disabled = true;
+			};
+			
+			$(document).ready(function(){
+			  // Add smooth scrolling to all links
+			  $("a").on('click', function(event) {
+
+			    // Make sure this.hash has a value before overriding default behavior
+			    if (this.hash !== "") {
+			      // Prevent default anchor click behavior
+			      event.preventDefault();
+
+			      // Store hash
+			      var hash = this.hash;
+
+			      // Using jQuery's animate() method to add smooth page scroll
+			      // The optional number (800) specifies the number of milliseconds it takes to scroll to the specified area
+			      $('html, body').animate({
+			        scrollTop: $(hash).offset().top
+			      }, 800, function(){
+			   
+			        // Add hash (#) to URL when done scrolling (default click behavior)
+			        window.location.hash = hash;
+			      });
+			    } // End if
+			  });
+			});
+			moon.onclick = darkMode;
+			sun.onclick = lightMode;
+			var topnav = document.getElementById('topnav');
+			var belowTopNavContent = document.getElementById('belowTopNavContent');
+			belowTopNavContent.style.paddingTop = topnav.offsetHeight + 30;

@@ -1,0 +1,80 @@
+body {
+  color: lightGrey;
+  background-color: #4f4f4f;
+}
+a {
+  color: #fff;
+}
+h1 {
+  color: #fff;
+}
+h2 {
+  color: #fff;
+}
+h6,
+h6 a {
+  color: #969595;
+}
+::selection {
+  background-color: lightGrey;
+  color: #fff;
+}
+mark {
+  background-color: rgba(79,79,79,0.5);
+  color: lightGrey;
+}
+nav {
+  background-color: #000;
+  box-shadow: 7px 7px 21px -10px rgba(36,36,36,0.89);
+}
+nav .topnavLinks a,
+nav h1 {
+  color: #fff;
+}
+nav .topnavLinks a:hover {
+  border-bottom: 1px solid #fff;
+}
+#moon,
+#sun:hover {
+  border: none;
+  cursor: pointer;
+}
+#moon {
+  display: none;
+}
+.card {
+  background-color: #000;
+  box-shadow: 7px 7px 21px -10px rgba(36,36,36,0.89);
+}
+.card:hover {
+  box-shadow: 7px 7px 35px -10px rgba(36,36,36,0.89);
+}
+.card h6 {
+  color: #fff;
+}
+.card .tags .tag {
+  background-color: rgba(255,255,255,0.1);
+  border: 2px solid rgba(255,255,255,0.9);
+}
+.card .tags .tag:hover {
+  background-color: rgba(0,0,0,0);
+}
+.progressBarContainer {
+  background-color: #969595;
+}
+.experience .card a:hover {
+  border-bottom: 1px solid #4f4f4f;
+}
+.playlistContainer {
+  background-color: #000;
+  box-shadow: 7px 7px 21px -10px rgba(36,36,36,0.89);
+}
+.playlistContainer:hover {
+  box-shadow: 7px 7px 35px -10px rgba(36,36,36,0.89);
+}
+.reachMe .col-2 .contactLinks a {
+  border-bottom: 1px solid rgba(0,0,0,0);
+}
+.reachMe .col-2 .contactLinks a:hover {
+  border-bottom: 1px solid #fafaf9;
+}

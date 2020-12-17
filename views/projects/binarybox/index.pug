@@ -1,0 +1,48 @@
+html
+	include ../../includes/head.pug
+	body.project
+		nav#topnav
+			.widthRestriction
+				a(href="/")#logo
+					h1#logo KRISH GOEL
+				div.topnavLinks#topnavLinks
+					a#moon 🌜
+					a#sun 🌞
+		#belowTopNavContent
+			.widthRestriction
+				h1 Binary Box
+				br
+				h5 🚀 Idea documentation
+				include documentationPartials/project.pug
+			br
+			br
+		//- Homebrewed scripts
+		script.
+			window.onload = function startScript() {	
+				var topnav = document.getElementById('topnav');
+				var topnavLogo = document.getElementById('logo');
+				var topnavLinks = document.getElementById('topnavLinks');
+
+				topnavLinks.style.paddingTop = ((topnav.offsetHeight - 30) - topnavLinks.offsetHeight)/2;
+			}
+
+			var moon = document.getElementById('moon');
+			var sun = document.getElementById('sun');
+
+			document.getElementById("darkSS").disabled = true;
+
+			function darkMode() {
+			  document.getElementById("lightSS").disabled = true;
+			  document.getElementById("darkSS").disabled = false;
+			}
+
+			function lightMode() {
+			  document.getElementById("lightSS").disabled = false;
+			  document.getElementById("darkSS").disabled = true;
+			}
+
+			moon.onclick = darkMode;
+			sun.onclick = lightMode;
+			var topnav = document.getElementById('topnav');
+			var belowTopNavContent = document.getElementById('belowTopNavContent');
+			belowTopNavContent.style.paddingTop = topnav.offsetHeight + 30;

@@ -1,0 +1,92 @@
+html
+	include ../includes/head.pug
+	body
+		nav#topnav
+			.widthRestriction
+				a(href="/")#logo
+					h1#logo(style="color: #4f4f4f;") KRISH GOEL
+				div.topnavLinks#topnavLinks
+					a#moon 🌜
+					a#sun 🌞
+					a(href="/projects") 🌐 Projects
+					a(href="/#repertoire") 📄 Repertoire
+					a(href="/#experience") 🎯 Experience
+					a(href="/blog") 📝 Blog
+					a(href="/#reachMe") ☎️ Reach me
+		#belowTopNavContent
+			.widthRestriction(style="margin-top: 150px;")
+				h1.mono 🌐 All Projects
+				.col-4
+					.largeScreen
+						include ../includes/partials/projectCards/gyaanAcademy.pug
+						include ../includes/partials/projectCards/lunatix.pug
+						include ../includes/partials/projectCards/arduinoDrumpads.pug
+					.midScreen
+						include ../includes/partials/projectCards/gyaanAcademy.pug
+						include ../includes/partials/projectCards/eyena.pug
+						include ../includes/partials/projectCards/lunatix.pug
+						include ../includes/partials/projectCards/alexation.pug 
+						include ../includes/partials/projectCards/arduinoDrumpads.pug
+					.smallScreen
+						include ../includes/partials/projectCards/gyaanAcademy.pug
+						include ../includes/partials/projectCards/vkyd.pug
+						include ../includes/partials/projectCards/eyena.pug
+						include ../includes/partials/projectCards/portfolio.pug
+						include ../includes/partials/projectCards/lunatix.pug
+						include ../includes/partials/projectCards/binaryBox.pug
+						include ../includes/partials/projectCards/alexation.pug 
+						include ../includes/partials/projectCards/teayamo.pug
+						include ../includes/partials/projectCards/arduinoDrumpads.pug
+						include ../includes/partials/projectCards/anet-a8.pug
+						include ../includes/partials/projectCards/lilypadGlove.pug
+
+				.col-4
+					.largeScreen
+						include ../includes/partials/projectCards/vkyd.pug
+						include ../includes/partials/projectCards/binaryBox.pug
+						include ../includes/partials/projectCards/anet-a8.pug
+					.midScreen
+						include ../includes/partials/projectCards/vkyd.pug
+						include ../includes/partials/projectCards/portfolio.pug
+						include ../includes/partials/projectCards/binaryBox.pug
+						include ../includes/partials/projectCards/teayamo.pug
+						include ../includes/partials/projectCards/anet-a8.pug
+					
+				.col-4
+					.largeScreen
+						include ../includes/partials/projectCards/eyena.pug
+						include ../includes/partials/projectCards/alexation.pug 
+
+				.col-4
+					.largeScreen
+						include ../includes/partials/projectCards/portfolio.pug
+						include ../includes/partials/projectCards/teayamo.pug
+		br
+		br
+		br
+		script.
+			window.onload = function startScript() {	
+				var topnav = document.getElementById('topnav');
+				var topnavLogo = document.getElementById('logo');
+				var topnavLinks = document.getElementById('topnavLinks');
+
+				topnavLinks.style.paddingTop = ((topnav.offsetHeight - 40) - topnavLinks.offsetHeight)/2;
+			}
+
+			var moon = document.getElementById('moon');
+			var sun = document.getElementById('sun');
+
+			document.getElementById("darkSS").disabled = true;
+
+			function darkMode() {
+			  document.getElementById("lightSS").disabled = true;
+			  document.getElementById("darkSS").disabled = false;
+			}
+
+			function lightMode() {
+			  document.getElementById("lightSS").disabled = false;
+			  document.getElementById("darkSS").disabled = true;
+			}
+
+			moon.onclick = darkMode;
+			sun.onclick = lightMode;

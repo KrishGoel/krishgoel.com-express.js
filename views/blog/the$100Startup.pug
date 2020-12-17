@@ -1,0 +1,58 @@
+html
+	include ../includes/head.pug
+	body.blogPage
+		nav#topnav
+			.widthRestriction
+				h1#logo.mono web.log(blog)
+				div.topnavLinks#topnavLinks
+					a#moon 🌜
+					a#sun 🌞
+					a(href="/") 🏠 Home
+		#belowTopNavContent
+			.widthRestriction(style="margin-top: 100px;")
+				.card
+					.widthRestriction
+						br
+						img(src="/images/blog/the$100Startup.jpg")
+						h1 The $100 Startup: My Notes
+						h4.mono 0X.08.2020
+						br
+						p 
+							| I recently discovered my passion for financial literacy and entrepreneurship after realising that money touches almost all domains of life which means that the 2 concepts are the building blocks for everything I aspire to have in the future.
+							br 
+							br
+							| Soon after this realization, I started reading up more on it and found some brilliant resources that I am sure will help you. I started with 
+							a(href="#") Rich Dad Poor Dad 
+							| by Robert Kiyosaki and Sharon Lechter and then went on to read 
+							a(href="#") The Hard Thing About Hard Things 
+							| by Ben Horowitz. Both the books talk beautifully about the intricacies of financial and business managements. 
+						//- .progressBarContainer(style="width: 80%")
+						//- 	.progressBar.B2G(style="width: 100%")
+
+		//- Homebrewed scripts
+		script.
+			window.onload = function startScript() {	
+				var topnav = document.getElementById('topnav');
+				var topnavLogo = document.getElementById('logo');
+				var topnavLinks = document.getElementById('topnavLinks');
+
+				topnavLinks.style.paddingTop = ((topnav.offsetHeight - 40) - topnavLinks.offsetHeight)/2;
+			}
+
+			var moon = document.getElementById('moon');
+			var sun = document.getElementById('sun');
+
+			document.getElementById("darkSS").disabled = true;
+
+			function darkMode() {
+			  document.getElementById("lightSS").disabled = true;
+			  document.getElementById("darkSS").disabled = false;
+			}
+
+			function lightMode() {
+			  document.getElementById("lightSS").disabled = false;
+			  document.getElementById("darkSS").disabled = true;
+			}
+
+			moon.onclick = darkMode;
+			sun.onclick = lightMode;

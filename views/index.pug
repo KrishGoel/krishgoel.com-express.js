@@ -1,0 +1,99 @@
+html(lang="en")
+	include includes/head.pug
+	body
+		.spinner-wrapper
+			.spinner
+				.double-bounce1
+				.double-bounce2
+
+		//- Loader CSS
+		style.
+			.spinner-wrapper {
+				position: fixed;
+				top: 0;
+				left: 0;
+				right: 0;
+				bottom: 0;
+				background-color: #f9f9f9;
+				z-index: 999999;
+			}
+
+			.spinner {
+				width: 40px;
+				height: 40px;
+				position: relative;
+				position: absolute;
+				top: 48%;
+				left: 48%;
+			}
+
+			.double-bounce1,
+			.double-bounce2 {
+				width: 100%;
+				height: 100%;
+				border-radius: 50%;
+				background-color: #2ff5b9;
+				opacity: 0.6;
+				position: absolute;
+				top: 0;
+				left: 0;
+				-webkit-animation: sk-bounce 2.0s infinite ease-in-out;
+				animation: sk-bounce 2.0s infinite ease-in-out;
+			}
+
+			.double-bounce2 {
+				-webkit-animation-delay: -1.0s;
+				animation-delay: -1.0s;
+			}
+
+			@-webkit-keyframes sk-bounce {
+				0%,
+				100% {
+					-webkit-transform: scale(0.0)
+				}
+				50% {
+					-webkit-transform: scale(1.0)
+				}
+			}
+
+			@keyframes sk-bounce {
+				0%,
+				100% {
+					transform: scale(0.0);
+					-webkit-transform: scale(0.0);
+				}
+				50% {
+					transform: scale(1.0);
+					-webkit-transform: scale(1.0);
+				}
+			}
+		script.
+			//- Loader JS
+			$(document).ready(function() {
+				//Preloader
+				preloaderFadeOutTime = 500;
+				function hidePreloader() {
+					var preloader = $('.spinner-wrapper');
+					preloader.fadeOut(preloaderFadeOutTime);
+				}
+				hidePreloader();
+			});
+
+		//- Main doc
+		include includes/partials/topnav.pug
+		#belowTopNavContent
+			include includes/partials/intro.pug
+			include includes/partials/blog.pug
+			include includes/partials/projects.pug
+			include includes/partials/repertoire.pug
+			include includes/partials/experience.pug
+			include includes/partials/reachMe.pug
+			br
+			br
+			br
+
+		//- Homebrewed scripts
+		script.
+			var topnav = document.getElementById('topnav');
+			var belowTopNavContent = document.getElementById('belowTopNavContent');
+			belowTopNavContent.style.paddingTop = topnav.offsetHeight;
